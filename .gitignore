@@ -1,0 +1,2 @@
+# Ignore the pluggins directory which contains the compiled file created by packer
+pluggin/
