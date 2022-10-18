@@ -1,7 +1,7 @@
 vim.cmd([[
 set number
 set relativenumber
-set shiftwidth=2
+set shiftwidth=4
 autocmd BufRead * autocmd FileType <buffer> ++once
      \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
 set mouse=a
