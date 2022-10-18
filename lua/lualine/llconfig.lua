@@ -6,8 +6,8 @@ require('lualine').setup {
 	component_separators = ''
     },
     sections = {
-	lualine_b = {'filename'},
-	lualine_c = {''},
+	lualine_b = {'branch'},
+	lualine_c = {'filename'},
 	lualine_x = {''}
     }
 }
