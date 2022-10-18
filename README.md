@@ -1,5 +1,6 @@
-<img src="img/neovim-logo.png" width="150" height="183" class="center">
-
+<p align="center">
+	<img src="img/neovim-logo.png" class="centerImage" width="150" height="183">
+</p>
 
 ## A simple neovim config 
 Written in lua and using [packer.nvim](https://github.com/wbthomason/packer.nvim) to manage plugins. Supported features:
