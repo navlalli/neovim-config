@@ -26,6 +26,10 @@ vim.keymap.set({ "i" }, "<c-l>", function()
     end
 end)
 
+-- Save the file first and then resource snipconfig with this keymap to view new snippets
+vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/snip/snipconfig.lua<CR>")
+-- require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
+
 ls.add_snippets("all", {
 	-- Available in any file type
     ls.snippet("test", {ls.text_node("printing static text"),
@@ -33,9 +37,20 @@ ls.add_snippets("all", {
     ls.parser.parse_snippet("fprint", "print(f\"{$1 = }\")$0"),
     ls.parser.parse_snippet("def", "def $1($2):$0"),
     ls.parser.parse_snippet("sub", "fig, ax = plt.subplots($1)"),
+    ls.parser.parse_snippet("reload", "!!Reloaded!!!"),
 
     },
     {
 	key = "all",
 })
 
+-- ls.add_snippets("all", {
+-- 	-- Available in any file type
+--     ls.snippet("test", {ls.text_node("printing static text"), }),
+--     ls.parser.parse_snippet("fprint", "print(f\"{$1 = }\")$0"),
+--     ls.parser.parse_snippet("def", "def $1($2):$0"),
+--     ls.parser.parse_snippet("sub", "fig, ax = plt.subplots($1)"),
+--     },
+--     {
+-- 	key = "all",
+-- })
