@@ -2,6 +2,24 @@
 local cmp = require'cmp'
 local lspkind = require'lspkind'
 local ls = require'luasnip'
+local s = ls.snippet
+local sn = ls.snippet_node
+local isn = ls.indent_snippet_node
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+local c = ls.choice_node
+local d = ls.dynamic_node
+local r = ls.restore_node
+local events = require("luasnip.util.events")
+local ai = require("luasnip.nodes.absolute_indexer")
+local fmt = require("luasnip.extras.fmt").fmt
+local extras = require("luasnip.extras")
+local m = extras.m
+local l = extras.l
+local rep = extras.rep
+local postfix = require("luasnip.extras.postfix").postfix
+
 ls.config.set_config{
     history = true,
     updateevents = "TextChanged,TextChangedI",
@@ -31,26 +49,21 @@ vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/snip/sn
 -- require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
 
 ls.add_snippets("all", {
-	-- Available in any file type
-    ls.snippet("test", {ls.text_node("printing static text"),
+    -- Available in any file type
+    s("test", {t("printing static text"),
     }),
-    ls.parser.parse_snippet("fprint", "print(f\"{$1 = }\")$0"),
+    s("imp", { t({"import numpy as np", "import matplotlib.pyplot as plt"})}),
+    -- s("plot", { t({"fig, ax = plt.subplots("}), i(1), t({")"})}),
+    ls.parser.parse_snippet("prf", "print(f\"{$1 = }\")$0"),
     ls.parser.parse_snippet("def", "def $1($2):$0"),
     ls.parser.parse_snippet("sub", "fig, ax = plt.subplots($1)"),
     ls.parser.parse_snippet("reload", "!!Reloaded!!!"),
+    ls.parser.parse_snippet("fig", "fig, ax = plt.subplots($1)\nax.plot($2)\nax.set_xlabel($3)\nax.set_xlabel($4)\nplt.show()"),
+    
+    -- HTML
+    ls.parser.parse_snippet("img", "<img src=\"$1\" alt=\"$2\" width=\"$3%\">"),
 
     },
     {
 	key = "all",
 })
-
--- ls.add_snippets("all", {
--- 	-- Available in any file type
---     ls.snippet("test", {ls.text_node("printing static text"), }),
---     ls.parser.parse_snippet("fprint", "print(f\"{$1 = }\")$0"),
---     ls.parser.parse_snippet("def", "def $1($2):$0"),
---     ls.parser.parse_snippet("sub", "fig, ax = plt.subplots($1)"),
---     },
---     {
--- 	key = "all",
--- })

@@ -7,7 +7,7 @@ autocmd BufRead * autocmd FileType <buffer> ++once
 set mouse=a
 set nohlsearch
 set cursorline
-set scrolloff=8
+" set scrolloff=8
 set colorcolumn=80
 ]])
 
