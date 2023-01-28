@@ -14,16 +14,16 @@ set colorcolumn=80
 vim.g.mapleader = " "
 vim.cmd([[colorscheme gruvbox]])
 
+require('telescope/teleconfig')
 require('lualine/llconfig')
 require('treesitter/treeconfig')
 require('lsp/lspconfig')
 require('comment/comconfig')
 require('cmp/cmpconfig')
 require('snip/snipconfig')
-require('telescope/teleconfig')
+require('run/run')
 
 -- Plugins
--- vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer
   use 'wbthomason/packer.nvim'
@@ -59,4 +59,6 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  -- Code runner
+  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
 end)
