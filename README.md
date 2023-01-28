@@ -9,7 +9,7 @@ Written in lua and using [packer.nvim](https://github.com/wbthomason/packer.nvim
 * Fast commenting
 * LSP 
 * Treesitter syntax highlighting
-* And hybrid line numbers for blazingly fast jumping between lines
+* And hybrid line numbers for blazingly fast between lines
 
 
 ### Key files
