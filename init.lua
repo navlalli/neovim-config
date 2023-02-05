@@ -14,6 +14,10 @@ set colorcolumn=80
 vim.g.mapleader = " "
 vim.cmd([[colorscheme gruvbox]])
 
+-- General keyboard shortcuts
+vim.keymap.set('v', '<C-y>', '"+y', {})
+
+
 require('telescope/teleconfig')
 require('lualine/llconfig')
 require('treesitter/treeconfig')
