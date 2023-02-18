@@ -27,6 +27,7 @@ cmp.setup({
     formatting = {
 	-- How to set up nice formatting for your sources.
 	format = lspkind.cmp_format {
+	  mode = "text", -- "symbol_text" adds symbol then text to the right
 	  with_text = true,
 	  menu = {
 	    buffer = "[BUF]",
