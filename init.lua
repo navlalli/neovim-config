@@ -15,7 +15,7 @@ vim.g.mapleader = " "
 vim.cmd([[colorscheme gruvbox]])
 
 -- General keyboard shortcuts
-vim.keymap.set('v', '<C-y>', '"+y', {})
+vim.keymap.set('v', '<C-y>', '"+y', {})  -- Copy to clipboard
 
 
 require('telescope/teleconfig')
@@ -65,4 +65,6 @@ return require('packer').startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   -- Code runner
   use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+  -- Markdown preview
+  use 'davidgranstrom/nvim-markdown-preview'
 end)
