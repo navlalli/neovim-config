@@ -1,3 +1,5 @@
+vim.loader.enable()  -- byte compiles and caches Lua files
+
 vim.cmd([[
 set number
 set relativenumber
