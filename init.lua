@@ -17,8 +17,11 @@ vim.g.mapleader = " "
 vim.cmd([[colorscheme gruvbox]])
 
 -- General keyboard shortcuts
-vim.keymap.set('v', '<C-y>', '"+y', {})  -- Copy to clipboard
-
+vim.keymap.set('v', '<C-y>', '"+y', { desc = 'Copy to global clipboard' })
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 require('telescope/teleconfig')
 require('lualine/llconfig')
@@ -61,7 +64,7 @@ return require('packer').startup(function(use)
   -- Fuzzy
   use 'nvim-lua/plenary.nvim'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }

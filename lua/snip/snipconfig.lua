@@ -56,6 +56,7 @@ ls.add_snippets("all", {
     s("imp", { t({"import numpy as np", "import matplotlib.pyplot as plt"})}),
     -- s("plot", { t({"fig, ax = plt.subplots("}), i(1), t({")"})}),
     ls.parser.parse_snippet("prf", "print(f\"{$1 = }\")$0"),
+    ls.parser.parse_snippet("sys", "sys.exit(0)"),
     ls.parser.parse_snippet("def", "def $1($2):$0"),
     ls.parser.parse_snippet("fig", "fig, ax = plt.subplots($1constrained_layout=True)\nax.plot($2)\nax.set_xlabel(\"$3\", fontsize=12)\nax.set_ylabel(\"$4\", fontsize=12)\n# ax.legend(loc=\"best\")\nplt.show()"),
     ls.parser.parse_snippet("main", "if __name__ == \"__main__\":"),

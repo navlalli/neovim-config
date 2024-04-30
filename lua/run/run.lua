@@ -35,15 +35,16 @@ require'sniprun'.setup({
   live_display = { "VirtualTextOk" }, --# display mode used in live_mode
 
   display_options = {
-    terminal_width = 45,       --# change the terminal display option width
-    notification_timeout = 5   --# timeout for nvim_notify output
+    terminal_width = 40,       --# change the terminal display option width
+    notification_timeout = 5,   --# timeout for nvim_notify output
+    terminal_persistence = false
   },
 
   --# You can use the same keys to customize whether a sniprun producing
   --# no output should display nothing or '(no output)'
   show_no_output = {
     "Classic",
-    "TempFloatingWindow",      --# implies LongTempFloatingWindow, which has no effect on its own
+    -- "TempFloatingWindow",      --# implies LongTempFloatingWindow, which has no effect on its own
   },
 
   --# customize highlight groups (setting this overrides colorscheme)
@@ -67,5 +68,6 @@ require'sniprun'.setup({
 -- vim.keymap.set('n', '<F5>', ":%SnipRun <CR>", {})
 vim.keymap.set('n', '<F5>', ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>", {})
 vim.keymap.set('n', '<F6>', ":SnipRun <CR>", {})
+vim.keymap.set('n', '<leader>c', ":SnipClose <CR>", {})
 -- vim.keymap.set('n', '<F6>', ":let b:caret=winsaveview() <CR> | :lua require'sniprun.api'.run_range(1, 5) <CR>| :call winrestview(b:caret) <CR>", {})
 
