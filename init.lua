@@ -1,20 +1,24 @@
 vim.loader.enable()  -- byte compiles and caches Lua files
 
+-- Set <space> as the leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- General settings
+vim.o.hlsearch = false
+vim.opt.relativenumber = true 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.cursorline = true
+vim.opt.shiftwidth = 4
+vim.opt.colorcolumn = '80'
+vim.opt.mouse = 'a'
+vim.cmd.colorscheme('gruvbox')
+
 vim.cmd([[
-set number
-set relativenumber
-set shiftwidth=4
 autocmd BufRead * autocmd FileType <buffer> ++once
      \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
-set mouse=a
-set nohlsearch
-set cursorline
-" set scrolloff=8
-set colorcolumn=80
 ]])
-
-vim.g.mapleader = " "
-vim.cmd([[colorscheme gruvbox]])
 
 -- General keyboard shortcuts
 vim.keymap.set('v', '<C-y>', '"+y', { desc = 'Copy to global clipboard' })
@@ -22,6 +26,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-a>', '<C-w>8>', { desc = 'Increase window size horizontally' })
+vim.keymap.set('n', '<C-s>', '<C-w>8<', { desc = '[S]hrink window size horizontally' })
+vim.keymap.set('n', '<leader>a', '<C-w>8+', { desc = 'Increase window size vertically' })
+vim.keymap.set('n', '<leader>d', '<C-w>8-', { desc = '[D]ecrease window size vertically' })
 
 require('telescope/teleconfig')
 require('lualine/llconfig')
