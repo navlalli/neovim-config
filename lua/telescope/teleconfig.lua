@@ -11,9 +11,8 @@ vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps'
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
--- vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files <CR>", {}) -- FindFiles (current directory)
--- vim.keymap.set('n', '<leader>hh', ":Telescope find_files cwd=~/navScripts/ <CR>", {})  -- Also works
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fn', "<cmd>Telescope find_files cwd=~/navScripts/ <CR>", {}) -- FindNav
-vim.keymap.set('n', '<leader>fh', "<cmd>Telescope find_files cwd=~/OneDrive/PhD/howTo/ <CR>", {}) -- FindHow
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch current [B]uffers' })
+vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+vim.keymap.set('n', '<leader>fn', "<cmd>Telescope find_files cwd=~/navScripts/ <CR>", { desc = '[F]ind files in nav' })
+vim.keymap.set('n', '<leader>fh', "<cmd>Telescope find_files cwd=~/OneDrive/PhD/howTo/ <CR>", { desc = '[F]ind files in how' })
