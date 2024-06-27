@@ -74,7 +74,7 @@ require("oil").setup({
     ["g\\"] = "actions.toggle_trash",
   },
   -- Set to false to disable all of the above keymaps
-  use_default_keymaps = true,
+  use_default_keymaps = false,
   view_options = {
     -- Show files and directories that start with "."
     show_hidden = false,
@@ -177,3 +177,4 @@ require("oil").setup({
 })
 
 vim.keymap.set('n', '<leader>e', ':Oil<CR>', { desc = '[E]xplore directory of current file' })
+vim.keymap.set('n', '<leader>le', ':vsplit <CR><C-w>w:Oil<CR>', { desc = '[E]xplore directory of current file in right split' })
