@@ -72,7 +72,11 @@ return require('packer').startup(function(use)
 	    ts_update()
 	end,
   }
-  use 'neovim/nvim-lspconfig'
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+  }
   -- Commenting
   use 'numToStr/Comment.nvim'
   -- Completion engine 
