@@ -59,6 +59,7 @@ ls.add_snippets("all", {
     ls.parser.parse_snippet("sys", "sys.exit(0)"),
     ls.parser.parse_snippet("def", "def $1($2):$0"),
     ls.parser.parse_snippet("fig", "fig, ax = plt.subplots($1constrained_layout=True)\nax.plot($2)\nax.set_xlabel(\"$3\", fontsize=12)\nax.set_ylabel(\"$4\", fontsize=12)\n# ax.legend(loc=\"best\")\nplt.show()"),
+    ls.parser.parse_snippet("pub", "fs_ticks = 7.5\nfs_text = 8.6\nfs_labels = 8.6\nwidth = 17.2 / 2.54  # inches\nheight = 0.32 * width  # inches\nfig, axs = plt.subplots(ncols=2, figsize=(width, height), dpi=123.6,\nconstrained_layout=True)"),
     ls.parser.parse_snippet("main", "if __name__ == \"__main__\":"),
     -- HTML
     ls.parser.parse_snippet("img", "<img src=\"$1\" alt=\"$2\" width=\"$3%\">"),
