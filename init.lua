@@ -53,6 +53,7 @@ require('cmp/cmpconfig')
 require('snip/snipconfig')
 require('run/run')
 require('oil/oilconfig')
+require('mini')
 
 -- Plugins
 return require('packer').startup(function(use)
@@ -103,4 +104,6 @@ return require('packer').startup(function(use)
   use 'davidgranstrom/nvim-markdown-preview'
   -- Oil
   use 'stevearc/oil.nvim'
+  -- Mini
+  use 'echasnovski/mini.nvim'
 end)
