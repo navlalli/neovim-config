@@ -7,7 +7,7 @@ require('lualine').setup {
     },
     sections = {
 	lualine_b = {'branch'},
-	lualine_c = {{'filename', path=4,}},
+	lualine_c = {{'filename', path=3,}},
 	lualine_x = {''}
     },
     inactive_sections = {
