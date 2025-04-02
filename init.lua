@@ -54,6 +54,7 @@ require('snip/snipconfig')
 require('run/run')
 require('oil/oilconfig')
 require('mini')
+require('fugitive')
 
 -- Plugins
 return require('packer').startup(function(use)
@@ -94,7 +95,7 @@ return require('packer').startup(function(use)
   -- Fuzzy
   use 'nvim-lua/plenary.nvim'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
@@ -104,6 +105,6 @@ return require('packer').startup(function(use)
   use 'davidgranstrom/nvim-markdown-preview'
   -- Oil
   use 'stevearc/oil.nvim'
-  -- Mini
-  use 'echasnovski/mini.nvim'
+  -- Git
+  use 'tpope/vim-fugitive'
 end)
