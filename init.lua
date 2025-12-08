@@ -15,6 +15,14 @@ vim.opt.shiftwidth = 4
 vim.opt.colorcolumn = '80'
 vim.opt.mouse = 'a'
 vim.cmd.colorscheme('gruvbox')
+vim.diagnostic.config({ virtual_text = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' }) -- Prevents comments rolling over
+  end,
+})
 
 -- Return to previous place in file
 vim.cmd([[
@@ -38,7 +46,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 -- vim.keymap.set('n', '<C-a>', '<C-w>8>', { desc = 'Increase window size horizontally' })
-vim.keymap.set('n', '<C-s>', '<C-w>8<', { desc = '[S]hrink window size horizontally' })
+-- vim.keymap.set('n', '<C-s>', '<C-w>8<', { desc = '[S]hrink window size horizontally' })
 -- vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = '[E]xplore directory of current file' })
 -- vim.keymap.set('n', '<leader>v', ':Vexplore!<CR>', { desc = '[V]ertical split explore directory of current file' })
 -- vim.keymap.set('n', '<leader>a', '<C-w>8+', { desc = 'Increase window size vertically' })
@@ -53,7 +61,6 @@ require('cmp/cmpconfig')
 require('snip/snipconfig')
 require('run/run')
 require('oil/oilconfig')
-require('mini')
 require('fugitive')
 
 -- Plugins
