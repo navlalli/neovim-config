@@ -10,40 +10,27 @@ require("mason-lspconfig").setup {
 }
 
 -- bash
-require'lspconfig'.bashls.setup{
+vim.lsp.config("bashls", {
     on_attach = function()
     print("Attached bashls")
-    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, {buffer=0})
-    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer=0})
-    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {buffer=0})
-    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {buffer=0})
-    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {buffer=0})
     end,  
-}
+})
 
 -- python 
-require'lspconfig'.pyright.setup{
+vim.lsp.config("pyright", {
     on_attach = function()
     print("Attached pyright")
-    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, {buffer=0})
-    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer=0})
-    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {buffer=0})
-    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {buffer=0})
-    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {buffer=0})
     end,  
-}
+})
 
 -- c++
-require'lspconfig'.clangd.setup{
+vim.lsp.config("clangd", {
     on_attach = function()
     print("Attached clangd")
-    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, {buffer=0})
-    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer=0})
-    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {buffer=0})
-    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {buffer=0})
-    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {buffer=0})
     end,  
-}
+})
+
+vim.lsp.enable({"bashls", "pyright", "clangd"})
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
