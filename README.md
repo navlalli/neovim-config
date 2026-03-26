@@ -2,12 +2,10 @@
 	<img src="img/neovim-logo.png" class="centerImage" width="150" height="183">
 </p>
 
-## My neovim config
-Written in lua and using [packer.nvim](https://github.com/wbthomason/packer.nvim) to manage plugins. Key features:
-* Hybrid line numbers, of course
-* Autocompletion with LSP
-* Treesitter syntax highlighting
-* Fuzzy finding
-* Snippets
-* Fast commenting
-* A code runner
+## Neovim config
+
+* Written in lua -> will simplify config over time
+
+### Todo
+
+* Use vim.pack when nvim 0.12 is released

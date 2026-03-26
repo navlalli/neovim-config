@@ -15,5 +15,6 @@ vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch current [B
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
 vim.keymap.set('n', '<leader>sc', builtin.current_buffer_fuzzy_find, { desc = '[S]earch [C]urrent Buffer' })
+vim.keymap.set('n', '<leader>sr', builtin.colorscheme, { desc = '[S]earch [R]ang' })
 vim.keymap.set('n', '<leader>fn', "<cmd>Telescope find_files cwd=~/navScripts/ <CR>", { desc = '[F]ind files in nav' })
 vim.keymap.set('n', '<leader>fh', "<cmd>Telescope find_files cwd=~/OneDrive/PhD/howTo/ <CR>", { desc = '[F]ind files in how' })

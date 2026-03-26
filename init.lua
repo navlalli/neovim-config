@@ -45,23 +45,17 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
--- vim.keymap.set('n', '<C-a>', '<C-w>8>', { desc = 'Increase window size horizontally' })
--- vim.keymap.set('n', '<C-s>', '<C-w>8<', { desc = '[S]hrink window size horizontally' })
--- vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = '[E]xplore directory of current file' })
--- vim.keymap.set('n', '<leader>v', ':Vexplore!<CR>', { desc = '[V]ertical split explore directory of current file' })
--- vim.keymap.set('n', '<leader>a', '<C-w>8+', { desc = 'Increase window size vertically' })
--- vim.keymap.set('n', '<leader>d', '<C-w>8-', { desc = '[D]ecrease window size vertically' })
 
-require('telescope/teleconfig')
-require('lualine/llconfig')
-require('treesitter/treeconfig')
-require('lsp/lspconfig')
-require('comment/comconfig')
-require('cmp/cmpconfig')
-require('snip/snipconfig')
-require('run/run')
-require('oil/oilconfig')
-require('fugitive')
+require('telescope-config')
+require('lualine-config')
+require('lsp-config')
+require('comment-config')
+require('cmp-config')
+require('run-config')
+require('oil-config')
+require('treesitter-config')
+require('snip-config')
+require('todo-comments').setup()
 
 -- Plugins
 return require('packer').startup(function(use)
@@ -69,7 +63,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- Colors
   use 'joshdick/onedark.vim'
-  use 'EdenEast/nightfox.nvim'
   use 'ellisonleao/gruvbox.nvim'
   -- Line
   use 'nvim-lualine/lualine.nvim'
@@ -112,6 +105,6 @@ return require('packer').startup(function(use)
   use 'davidgranstrom/nvim-markdown-preview'
   -- Oil
   use 'stevearc/oil.nvim'
-  -- Git
-  use 'tpope/vim-fugitive'
+  -- Todo
+  use 'folke/todo-comments.nvim'
 end)
