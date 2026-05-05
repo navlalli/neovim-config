@@ -1,4 +1,4 @@
-vim.loader.enable()  -- byte compiles and caches Lua files
+-- vim.loader.enable()  -- byte compiles and caches Lua files
 
 -- Set <space> as the leader key
 vim.g.mapleader = " "
@@ -16,6 +16,13 @@ vim.opt.colorcolumn = '80'
 vim.opt.mouse = 'a'
 vim.cmd.colorscheme('gruvbox')
 vim.diagnostic.config({ virtual_text = true })
+
+-- Terminal mode settings
+vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', { desc = 'Escape terminal mode' })
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
@@ -59,52 +66,48 @@ require('todo-comments').setup()
 
 -- Plugins
 return require('packer').startup(function(use)
-  -- Packer
-  use 'wbthomason/packer.nvim'
-  -- Colors
-  use 'joshdick/onedark.vim'
-  use 'ellisonleao/gruvbox.nvim'
-  -- Line
-  use 'nvim-lualine/lualine.nvim'
-  -- Treesitter and lsp
-  use {
-	'nvim-treesitter/nvim-treesitter',
-	run = function()
-	    local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-	    ts_update()
-	end,
-  }
-  use {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig',
-  }
-  -- Commenting
-  use 'numToStr/Comment.nvim'
-  -- Completion engine 
-  use 'hrsh7th/nvim-cmp'
-  -- Completion sources 
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-nvim-lsp'
-  -- Snippets 
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-  -- Displaying
-  use 'onsails/lspkind.nvim'
-  -- Fuzzy
-  use 'nvim-lua/plenary.nvim'
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.2.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-  -- Code runner
-  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
-  -- Markdown preview
-  use 'davidgranstrom/nvim-markdown-preview'
-  -- Oil
-  use 'stevearc/oil.nvim'
-  -- Todo
-  use 'folke/todo-comments.nvim'
+     -- Packer
+     use 'wbthomason/packer.nvim'
+     -- Colors
+     use 'joshdick/onedark.vim'
+     use 'ellisonleao/gruvbox.nvim'
+     -- Line
+     use 'nvim-lualine/lualine.nvim'
+     -- Treesitter and lsp
+     use {
+    'nvim-treesitter/nvim-treesitter', branch = 'master',
+     }
+     use {
+       'williamboman/mason.nvim',
+       'williamboman/mason-lspconfig.nvim',
+       'neovim/nvim-lspconfig',
+     }
+     -- Commenting
+     use 'numToStr/Comment.nvim'
+     -- Completion engine 
+     use 'hrsh7th/nvim-cmp'
+     -- Completion sources 
+     use 'hrsh7th/cmp-buffer'
+     use 'hrsh7th/cmp-path'
+     use 'hrsh7th/cmp-nvim-lsp'
+     -- Snippets 
+     use 'L3MON4D3/LuaSnip'
+     use 'saadparwaiz1/cmp_luasnip'
+     -- Displaying
+     use 'onsails/lspkind.nvim'
+     -- Fuzzy
+     use 'nvim-lua/plenary.nvim'
+     use {
+       'nvim-telescope/telescope.nvim', tag = '0.2.*',
+       requires = { {'nvim-lua/plenary.nvim'} }
+     }
+     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+     -- Code runner
+     use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+     -- Markdown preview
+     use 'davidgranstrom/nvim-markdown-preview'
+     -- Oil
+     use 'stevearc/oil.nvim'
+     -- Todo
+     use 'folke/todo-comments.nvim'
 end)
