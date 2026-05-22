@@ -14,6 +14,7 @@ vim.opt.cursorline = true
 vim.opt.shiftwidth = 4
 vim.opt.colorcolumn = '80'
 vim.opt.mouse = 'a'
+vim.opt.splitright = true
 vim.cmd.colorscheme('gruvbox')
 vim.diagnostic.config({ virtual_text = true })
 
@@ -23,6 +24,13 @@ vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w><C-h>', { desc = 'Move focus to th
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.api.nvim_create_autocmd({'BufEnter', 'TermOpen'}, {
+    pattern = 'term://*',
+    callback = function()
+	vim.cmd.startinsert()
+    end,
+    })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
@@ -40,7 +48,7 @@ autocmd BufRead * autocmd FileType <buffer> ++once
 -- Highlight on yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
@@ -52,6 +60,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<leader>u', function()
+  vim.cmd('cd %:h')
+  print("cwd changed to " .. vim.fn.getcwd())
+end, { desc = '[u]pdate cwd to current file directory' })
 
 require('telescope-config')
 require('lualine-config')
