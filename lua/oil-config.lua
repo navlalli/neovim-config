@@ -65,7 +65,7 @@ require("oil").setup({
     ["<C-c>"] = "actions.close",
     -- ["<C-l>"] = "actions.refresh",
     ["-"] = "actions.parent",
-    ["_"] = "actions.open_cwd",
+    -- ["_"] = "actions.open_cwd",
     ["`"] = "actions.cd",
     ["~"] = "actions.tcd",
     ["gs"] = "actions.change_sort",
@@ -177,4 +177,4 @@ require("oil").setup({
 })
 
 vim.keymap.set('n', '<leader>e', ':Oil<CR>', { desc = '[E]xplore directory of current file' })
-vim.keymap.set('n', '<leader>le', ':vsplit <CR><C-w>w:Oil<CR>', { desc = '[E]xplore directory of current file in right split' })
+vim.keymap.set('n', '<leader>le', ':vsplit <CR>:Oil<CR>', { desc = '[E]xplore directory of current file in right split' })
