@@ -35,9 +35,11 @@ vim.keymap.set('n', '<leader>p', function()
 	    vim.cmd('write')
 	    -- Get name of current buffer
 	    local fname = vim.api.nvim_buf_get_name(0)
+	    local buf_dir = vim.fs.dirname(fname)
 	    local ftype = vim.bo[0].filetype
             local job_id = vim.b[bufnr].terminal_job_id
             if job_id then
+		vim.api.nvim_chan_send(job_id, "cd " .. buf_dir .. "\r")
 		if ftype == "python" then
 		    vim.api.nvim_chan_send(job_id, "python " .. fname .. "\r")
 		    return
