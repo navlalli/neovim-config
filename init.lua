@@ -25,6 +25,35 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w><C-l>', { desc = 'Move focus to th
 vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>t', function() vim.cmd('vertical terminal') end, { desc = 'Open terminal in right split' })
+
+vim.keymap.set('n', '<leader>p', function()
+    -- Find the first available terminal buffer
+    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.bo[bufnr].buftype == 'terminal' then
+	    -- Save current buffer
+	    vim.cmd('write')
+	    -- Get name of current buffer
+	    local fname = vim.api.nvim_buf_get_name(0)
+	    local ftype = vim.bo[0].filetype
+            local job_id = vim.b[bufnr].terminal_job_id
+            if job_id then
+		if ftype == "python" then
+		    vim.api.nvim_chan_send(job_id, "python " .. fname .. "\r")
+		    return
+		elseif ftype == "sh" then
+		    vim.api.nvim_chan_send(job_id, "bash " .. fname .. "\r")
+		    return
+		else
+		    print("Non-implemented file type " .. ftype)
+		    return
+		end
+            end
+        end
+    end
+    print("No active terminal found")
+end, { desc = "Python run current buffer" })
+
 vim.api.nvim_create_autocmd({'BufEnter', 'TermOpen'}, {
     pattern = 'term://*',
     callback = function()
