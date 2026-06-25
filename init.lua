@@ -106,6 +106,7 @@ require('oil-config')
 require('treesitter-config')
 require('snip-config')
 require('todo-comments').setup()
+require('fugitive')
 
 -- Plugins
 return require('packer').startup(function(use)
@@ -153,4 +154,6 @@ return require('packer').startup(function(use)
      use 'stevearc/oil.nvim'
      -- Todo
      use 'folke/todo-comments.nvim'
+     -- git
+     use 'tpope/vim-fugitive'
 end)
